@@ -11,11 +11,11 @@ function App() {
 
 
   return (
-    <>
+    <div className='m-20'>
       
       <h1  className='text-6xl my-20 text-center text-purple-600'>Hot Tea</h1>
      
-      <div className='grid md:grid-cols-2'>
+      <div className='grid md:grid-cols-2 gap-8 mb-8'>
     {
        teas.map(tea => <TeaCard
         
@@ -27,7 +27,7 @@ function App() {
       }
     
     </div>
-    </>
+    </div>
   )
 }
 
