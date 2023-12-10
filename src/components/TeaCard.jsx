@@ -1,4 +1,6 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import Swal from "sweetalert2";
 
 
 const TeaCard = ({ tea, teas, setTeas }) => {
@@ -7,6 +9,39 @@ const TeaCard = ({ tea, teas, setTeas }) => {
     const { _id, name, quantity, supplier, taste, category, details, photo } = tea;
 
 
+    const handleDelete = _id => {
+
+        console.log(_id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/tea/${_id}`, {
+                    method: 'DELETE'
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your Tea has been deleted.',
+                            'success'
+                        )
+                        const remaining = teas.filter(te => te._id !== _id);
+                        setTeas(remaining);
+                      
+                    }
+                })
+            }
+          });
+    }
 
 
     return (
@@ -22,13 +57,13 @@ const TeaCard = ({ tea, teas, setTeas }) => {
                 <div className="card-actions justify-end">
                     <div className="btn-group btn-group-vertical space-y-4 ml-10">
                         <button className="btn ml-6 mb-3">View</button>
-                       {/* <Link to={`updateCoffee/${_id}`}> */}
+                       <Link to={`updateTea/${_id}`}>
                        
                        <button className="btn ml-6 ">Edit</button>
-                       {/* </Link> */}
+                       </Link>
                         <button
-                            // onClick={() => handleDelete(_id)}
-                            className="btn bg-red-400 ml-6 ">X</button>
+                            onClick={() => handleDelete(_id)}
+                            className="btn bg-red-500 ml-6 text-white">X</button>
                     </div>
                 </div>
             </div>

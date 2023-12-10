@@ -22,10 +22,10 @@ const router = createBrowserRouter([
   },
 
   {
-    path:"updateTea",
-    element: <UpdateTea></UpdateTea>
+    path:"updateTea/:id",
+    element: <UpdateTea></UpdateTea>,
+    loader: ({params}) => fetch(`http://localhost:5000/tea/${params.id}`)
   
-    
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
