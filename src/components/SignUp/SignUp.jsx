@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
+  const {createUser} = useContext(AuthContext);
 
     const handleSignUp = e =>{
         e.preventDefault();
@@ -17,7 +21,7 @@ const SignUp = () => {
             const createdAt = result.user?.metadata?.creationTime
 
             const user = {email, createdAt:createdAt};
-            fetch('https://coffee-store-server-2ex7hztot-neaz-morsheds-projects.vercel.app/user', {
+            fetch('http://localhost:5000/user', {
               method: 'POST',
               headers: {
                 'content-type': 'application/json'
