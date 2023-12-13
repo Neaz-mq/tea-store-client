@@ -22,7 +22,7 @@ const AddTea = () => {
 
 
         
-        fetch('http://localhost:5000/tea', {
+        fetch('https://tea-store-server-ten.vercel.app/tea', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

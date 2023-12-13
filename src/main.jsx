@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    loader: () => fetch('http://localhost:5000/tea')
+    loader: () => fetch('https://tea-store-server-ten.vercel.app/tea')
   },
   {
     path:"addTea",
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
   {
     path:"updateTea/:id",
     element: <UpdateTea></UpdateTea>,
-    loader: ({params}) => fetch(`http://localhost:5000/tea/${params.id}`)
+    loader: ({params}) => fetch(`https://tea-store-server-ten.vercel.app/tea/${params.id}`)
   
   },
   {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
   {
     path:"/users",
     element: <Users></Users>,
-    loader: () => fetch('http://localhost:5000/user')
+    loader: () => fetch('https://tea-store-server-ten.vercel.app/user')
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(

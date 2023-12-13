@@ -26,7 +26,7 @@ const UpdateTea = () => {
 
  // send data to the server
 
- fetch(`http://localhost:5000/tea/${_id}`, {
+ fetch(`https://tea-store-server-ten.vercel.app/tea/${_id}`, {
     method: 'PUT',
     headers: {
         'content-type': 'application/json'
